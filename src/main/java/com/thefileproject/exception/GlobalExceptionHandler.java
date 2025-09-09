@@ -10,13 +10,13 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
-    public ResponseEntity<String> handleMaxSizeException(MaxUploadSizeExceededException e) {
+    public ResponseEntity<String> handleMaxSizeException() {
         return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE)
                 .body("File is too large");
     }
 
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
+    public ResponseEntity<String> handleRuntimeException() {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("Internal server error");
     }
