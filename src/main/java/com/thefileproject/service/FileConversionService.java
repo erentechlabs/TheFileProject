@@ -2,6 +2,8 @@ package com.thefileproject.service;
 import com.thefileproject.dto.ConversionResponse;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Set;
+
 public interface FileConversionService {
 
     /**
@@ -27,7 +29,7 @@ public interface FileConversionService {
      *
      * @return Set of supported source formats
      */
-    java.util.Set<String> getSupportedSourceFormats();
+    Set<String> getSupportedSourceFormats();
 
     /**
      * Gets all supported target formats for a given source format
@@ -35,5 +37,5 @@ public interface FileConversionService {
      * @param sourceFormat The source format
      * @return Set of supported target formats
      */
-    java.util.Set<String> getSupportedTargetFormats(String sourceFormat);
+    Set<String> getSupportedTargetFormats(String sourceFormat);
 }
