@@ -54,14 +54,12 @@ public class ImageService {
                 throw new InvalidFileException("Cannot read image from file: " + file.getOriginalFilename());
             }
 
-            // Create a new BufferedImage with RGB type for JPG (no transparency)
             BufferedImage rgbImage = new BufferedImage(
                     originalImage.getWidth(),
                     originalImage.getHeight(),
                     BufferedImage.TYPE_INT_RGB
             );
 
-            // Draw the original image onto the RGB image
             rgbImage.createGraphics().drawImage(originalImage, 0, 0, null);
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -76,22 +74,25 @@ public class ImageService {
         }
     }
 
+
     public byte[] convertToWebp(MultipartFile file) {
         validateImageFile(file);
 
         try {
-            // Note: Java doesn't have native WebP support, using workaround
             BufferedImage image = ImageIO.read(new ByteArrayInputStream(file.getBytes()));
             if (image == null) {
                 throw new InvalidFileException("Cannot read image from file: " + file.getOriginalFilename());
             }
 
-            // For now, we'll convert to PNG as WebP requires additional libraries
-            // In production, you'd want to add a webp-imageio library
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            ImageIO.write(image, "PNG", outputStream);
 
-            log.info("Successfully converted {} to WebP format (as PNG)", file.getOriginalFilename());
+            boolean success = ImageIO.write(image, "webp", outputStream);
+
+            if (!success) {
+                throw new FileConversionException("WebP format is not supported by the current ImageIO configuration");
+            }
+
+            log.info("Successfully converted {} to WebP format", file.getOriginalFilename());
             return outputStream.toByteArray();
 
         } catch (IOException e) {
@@ -119,14 +120,13 @@ public class ImageService {
                     builder.forceSize(width, height);
                 }
 
-                // Determine an output format from input
                 String format = getFileExtension(file.getOriginalFilename());
                 if (format.equals("jpg") || format.equals("jpeg")) {
                     builder.outputFormat("jpg");
                 } else if (format.equals("png")) {
                     builder.outputFormat("png");
                 } else {
-                    builder.outputFormat("png"); // Default to PNG for other formats
+                    builder.outputFormat("png");
                 }
 
                 builder.toOutputStream(outputStream);
@@ -148,7 +148,7 @@ public class ImageService {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
             Thumbnails.of(new ByteArrayInputStream(file.getBytes()))
-                    .scale(1.0)  // Keep the original size
+                    .scale(1.0)
                     .outputQuality(quality)
                     .toOutputStream(outputStream);
 
@@ -181,7 +181,6 @@ public class ImageService {
             );
         }
 
-        // Validate file size (max 50MB as configured)
         if (file.getSize() > 50 * 1024 * 1024) {
             throw new InvalidFileException("File size exceeds maximum limit of 50MB");
         }
