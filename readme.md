@@ -1,4 +1,4 @@
-# TheFileProject 🚀
+# The File Project 📁
 
 A comprehensive REST API for file conversion and manipulation built with Spring Boot. This application provides endpoints for converting, resizing, compressing, and manipulating various file formats including images, PDFs, office documents, and media files.
 
