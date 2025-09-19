@@ -1,6 +1,6 @@
 # The File Project 📁
 
-A comprehensive REST API for file conversion and manipulation built with Spring Boot. It provides endpoints for converting, resizing, compressing, and processing images, PDFs, Office documents, and media files.
+A comprehensive REST API for file conversion and manipulation built with Spring Boot. It provides endpoints for converting, resizing, compressing, and processing images, PDFs, Office documents.
 
 ## 📋 Table of Contents
 
@@ -15,9 +15,7 @@ A comprehensive REST API for file conversion and manipulation built with Spring 
 - [Architecture](#architecture)
 - [Security Considerations](#security-considerations)
 - [Development Status](#development-status)
-- [Contributing](#contributing)
-- [License](#license)
-
+- 
 ## ✨ Features
 
 ### Image Processing
@@ -37,10 +35,6 @@ A comprehensive REST API for file conversion and manipulation built with Spring 
 - PDF → DOCX (text-only), DOCX ↔ XLSX conversions, DOCX/XLSX copy
 - Integration with Apache POI
 
-### Media File Support
-- Video formats: MP4, AVI, MOV, MKV
-- Audio formats: MP3, WAV, FLAC
-
 ## 📁 Supported File Formats
 
 | Category | Formats |
@@ -48,8 +42,6 @@ A comprehensive REST API for file conversion and manipulation built with Spring 
 | Images | JPG, JPEG, PNG, GIF, BMP, WebP |
 | PDF | PDF |
 | Office | DOCX, DOC, XLSX, XLS, PPTX, PPT |
-| Video | MP4, AVI, MOV, MKV |
-| Audio | MP3, WAV, FLAC |
 
 ## 🔧 Prerequisites
 
@@ -213,7 +205,5 @@ text src/main/java/com/thefileproject/
 - ✅ Image Processing: Fully implemented
 - ✅ PDF Operations: Implemented (basic conversions)
 - ✅ Office Documents: Implemented (basic conversions)
-- 🗓️ Video Processing: Planned
-- 🗓️ Audio Processing: Planned
 
 
