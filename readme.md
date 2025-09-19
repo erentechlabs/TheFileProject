@@ -203,7 +203,7 @@ text src/main/java/com/thefileproject/
 ``` 
 
 ## 🛡 Security Considerations
-- Enforced file size limits (default 50MB)
+- Enforced file size limits (default 300MB)
 - File type validation
 - Temporary file cleanup
 - Error message sanitization
