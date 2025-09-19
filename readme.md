@@ -84,13 +84,15 @@ properties
 # Server Configuration
 server.port=8080
 # File Upload Configuration
-spring.servlet.multipart.max-file-size=50MB spring.servlet.multipart.max-request-size=50MB
+spring.servlet.multipart.max-file-size=300MB 
+spring.servlet.multipart.max-request-size=300MB
 # Temporary Directory
 file.upload.temp-dir=${java.io.tmpdir}/thefileproject
 # Conversion Timeout
 file.conversion.timeout-seconds=30
 # Logging Configuration
-logging.level.com.thefileproject=DEBUG logging.file.name=logs/thefileproject.log
+logging.level.com.thefileproject=DEBUG 
+logging.file.name=logs/thefileproject.log
 ``` 
 
 Customizable settings:
@@ -157,7 +159,8 @@ fetch('/api/v1/convert/image/to-png', { method: 'POST', body: formData })
 const a = document.createElement('a'); 
 a.href = url; 
 a.download = 'converted.png'; 
-a.click(); URL.revokeObjectURL(url); });
+a.click(); 
+URL.revokeObjectURL(url); });
 ``` 
 
 ## ❌ Error Handling
