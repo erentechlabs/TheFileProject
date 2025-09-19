@@ -61,7 +61,8 @@ A comprehensive REST API for file conversion and manipulation built with Spring 
 
 ### Clone the repository
 ``` bash
-bash git clone [https://github.com/erentechlabs/TheFileProject](https://github.com/erentechlabs/TheFileProject) cd TheFileProject
+bash git clone https://github.com/erentechlabs/TheFileProject
+cd TheFileProject
 ``` 
 
 ### Build the project
