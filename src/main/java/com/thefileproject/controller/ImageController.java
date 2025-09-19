@@ -2,7 +2,6 @@ package com.thefileproject.controller;
 
 import com.thefileproject.service.ImageService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/v1/convert/image")
 @RequiredArgsConstructor
@@ -21,7 +19,6 @@ public class ImageController {
 
     @PostMapping("/to-png")
     public ResponseEntity<Resource> convertToPng(@RequestParam("file") MultipartFile file) {
-        log.info("Received request to convert {} to PNG", file.getOriginalFilename());
 
         byte[] convertedImage = imageService.convertToPng(file);
         String outputFilename = getFileNameWithoutExtension(file.getOriginalFilename()) + ".png";
@@ -35,7 +32,6 @@ public class ImageController {
 
     @PostMapping("/to-jpg")
     public ResponseEntity<Resource> convertToJpg(@RequestParam("file") MultipartFile file) {
-        log.info("Received request to convert {} to JPG", file.getOriginalFilename());
 
         byte[] convertedImage = imageService.convertToJpg(file);
         String outputFilename = getFileNameWithoutExtension(file.getOriginalFilename()) + ".jpg";
@@ -49,7 +45,6 @@ public class ImageController {
 
     @PostMapping("/to-webp")
     public ResponseEntity<Resource> convertToWebp(@RequestParam("file") MultipartFile file) {
-        log.info("Received request to convert {} to WEBP", file.getOriginalFilename());
 
         byte[] convertedImage = imageService.convertToWebp(file);
         String outputFilename = getFileNameWithoutExtension(file.getOriginalFilename()) + ".webp";
@@ -68,7 +63,6 @@ public class ImageController {
             @RequestParam("height") int height,
             @RequestParam(value = "keepAspectRatio", defaultValue = "true") boolean keepAspectRatio) {
 
-        log.info("Received request to resize {} to {}x{}", file.getOriginalFilename(), width, height);
 
         byte[] resizedImage = imageService.resizeImage(file, width, height, keepAspectRatio);
 
@@ -84,7 +78,6 @@ public class ImageController {
             @RequestParam("file") MultipartFile file,
             @RequestParam(value = "quality", defaultValue = "0.8") float quality) {
 
-        log.info("Received request to compress {} with quality {}", file.getOriginalFilename(), quality);
 
         if (quality < 0.1 || quality > 1.0) {
             throw new IllegalArgumentException("Quality must be between 0.1 and 1.0");
