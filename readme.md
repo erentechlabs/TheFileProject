@@ -60,17 +60,17 @@ A comprehensive REST API for file conversion and manipulation built with Spring 
 ## 🚀 Installation
 
 ### Clone the repository
-```
+``` bash
 bash git clone [https://github.com/erentechlabs/TheFileProject](https://github.com/erentechlabs/TheFileProject) cd TheFileProject
 ``` 
 
 ### Build the project
-```
+``` bash
 bash mvn clean install
 ``` 
 
 ### Run the application
-```
+``` bash
 bash mvn spring-boot:run
 ``` 
 
@@ -79,7 +79,7 @@ The application starts at: http://localhost:8080
 ## ⚙️ Configuration
 
 Create or edit `src/main/resources/application.properties`:
-```
+``` 
 properties
 # Server Configuration
 server.port=8080
@@ -120,7 +120,7 @@ Customizable settings:
 ## 📝 Usage Examples
 
 ### Convert Image to PNG
-```
+``` bash
 bash curl -X POST
 [http://localhost:8080/api/v1/convert/image/to-png](http://localhost:8080/api/v1/convert/image/to-png)
 -F 'file=@example.jpg'
@@ -128,7 +128,7 @@ bash curl -X POST
 ``` 
 
 ### Resize Image
-```
+``` bash
 bash curl -X POST
 [http://localhost:8080/api/v1/convert/image/resize](http://localhost:8080/api/v1/convert/image/resize)
 -F 'file=@example.jpg'
@@ -139,7 +139,7 @@ bash curl -X POST
 ``` 
 
 ### Compress Image
-```
+``` bash
 bash curl -X POST
 [http://localhost:8080/api/v1/convert/image/compress](http://localhost:8080/api/v1/convert/image/compress)
 -F 'file=@example.jpg'
@@ -148,16 +148,28 @@ bash curl -X POST
 ``` 
 
 ### Using JavaScript (browser)
-```
-javascript const formData = new FormData(); formData.append('file', fileInput.files[0]);
-fetch('/api/v1/convert/image/to-png', { method: 'POST', body: formData }) .then(res => res.blob()) .then(blob => { const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'converted.png'; a.click(); URL.revokeObjectURL(url); });
+``` javascript
+javascript const formData = new FormData(); 
+formData.append('file', fileInput.files[0]);
+fetch('/api/v1/convert/image/to-png', { method: 'POST', body: formData })
+.then(res => res.blob())
+.then(blob => { const url = URL.createObjectURL(blob); 
+const a = document.createElement('a'); 
+a.href = url; 
+a.download = 'converted.png'; 
+a.click(); URL.revokeObjectURL(url); });
 ``` 
 
 ## ❌ Error Handling
 
 Typical error response:
-```
-json { "timestamp": "2024-01-15T10:30:00Z", "status": 400, "error": "Bad Request", "message": "File format .xyz is not supported. Supported formats: jpg, jpeg, png, gif, bmp, webp", "path": "/api/v1/convert/image/to-png" }
+``` json 
+{ 
+"timestamp": "2024-01-15T10:30:00Z", 
+"status": 400, "error": "Bad Request", 
+"message": "File format .xyz is not supported. Supported formats: jpg, jpeg, png, gif, bmp, webp", 
+"path": "/api/v1/convert/image/to-png" 
+}
 ``` 
 
 Error codes:
@@ -168,7 +180,23 @@ Error codes:
 
 ## 🏗 Architecture
 ```
-text src/main/java/com/thefileproject/ ├── controller/ # REST API endpoints │ ├── ImageController.java │ ├── PdfController.java │ ├── OfficeController.java │ └── VideoController.java ├── service/ # Business logic │ ├── ImageService.java │ ├── PdfService.java │ ├── OfficeService.java │ └── VideoService.java ├── exception/ # Custom exceptions and error handling │ ├── custom_exception_classes/ │ ├── dto/ │ └── GlobalExceptionHandler.java └── TheFileProjectApplication.java
+text src/main/java/com/thefileproject/ 
+├── controller/ # REST API endpoints 
+│ ├── ImageController.java 
+│ ├── PdfController.java 
+│ ├── OfficeController.java 
+│ └── VideoController.java 
+├── service/ # Business logic 
+│ ├── ImageService.java 
+│ ├── PdfService.java 
+│ ├── OfficeService.java 
+│ └── VideoService.java 
+├── exception
+/ # Custom exceptions and error handling 
+│ ├── custom_exception_classes/ 
+│ ├── dto/ 
+│ └── GlobalExceptionHandler.java 
+└── TheFileProjectApplication.java
 ``` 
 
 ## 🛡 Security Considerations
