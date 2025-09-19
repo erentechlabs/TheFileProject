@@ -185,9 +185,4 @@ text src/main/java/com/thefileproject/ ├── controller/ # REST API endpoint
 - 🗓️ Video Processing: Planned
 - 🗓️ Audio Processing: Planned
 
-## 🤝 Contributing
-Contributions are welcome! Please open an issue or submit a pull request with a clear description of changes and tests where applicable.
-
-## 📄 License
-This project is licensed under the MIT License. See `LICENSE` for details.
 
