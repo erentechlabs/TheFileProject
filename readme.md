@@ -195,8 +195,7 @@ text src/main/java/com/thefileproject/
 │ ├── PdfService.java 
 │ ├── OfficeService.java 
 │ └── VideoService.java 
-├── exception
-/ # Custom exceptions and error handling 
+├── exception/ # Custom exceptions and error handling 
 │ ├── custom_exception_classes/ 
 │ ├── dto/ 
 │ └── GlobalExceptionHandler.java 
