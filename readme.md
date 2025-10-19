@@ -274,20 +274,5 @@ src/main/java/com/thefileproject/
 | **Office Documents** | ✅ Complete | Cross-format conversions available |
 | **Video Processing** | 🚧 Planned | Future implementation |
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👥 Contributors
-
-Developed by [Eren Tech Labs](https://github.com/erentechlabs)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📞 Support
-
-For issues, questions, or suggestions, please open an issue on GitHub.
 
 
